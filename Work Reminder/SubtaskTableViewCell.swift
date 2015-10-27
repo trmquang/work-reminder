@@ -9,7 +9,11 @@
 import UIKit
 
 class SubtaskTableViewCell: UITableViewCell {
+    // MARK: Properties
 
+    @IBOutlet weak var taskName: UILabel!
+    
+    @IBOutlet weak var deleteBtn: UIButton!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

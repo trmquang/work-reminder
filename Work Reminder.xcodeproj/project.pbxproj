@@ -14,6 +14,17 @@
 		1C16C4851BC9207800EB21A8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1C16C4831BC9207800EB21A8 /* LaunchScreen.storyboard */; };
 		1C16C4901BC9207800EB21A8 /* Work_ReminderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C16C48F1BC9207800EB21A8 /* Work_ReminderTests.swift */; };
 		1C16C49B1BC9207800EB21A8 /* Work_ReminderUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C16C49A1BC9207800EB21A8 /* Work_ReminderUITests.swift */; };
+		1C16C4A91BCA1FE100EB21A8 /* PriorityControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C16C4A81BCA1FE100EB21A8 /* PriorityControl.swift */; settings = {ASSET_TAGS = (); }; };
+		1C16C4AB1BCBDED900EB21A8 /* Work.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C16C4AA1BCBDED900EB21A8 /* Work.swift */; settings = {ASSET_TAGS = (); }; };
+		1C16C4AD1BCC185C00EB21A8 /* Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C16C4AC1BCC185C00EB21A8 /* Task.swift */; settings = {ASSET_TAGS = (); }; };
+		1C16C4B11BCC2ABE00EB21A8 /* SubtaskTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C16C4B01BCC2ABE00EB21A8 /* SubtaskTableViewCell.swift */; settings = {ASSET_TAGS = (); }; };
+		1C16C4B81BCE2EE900EB21A8 /* WorksTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C16C4B71BCE2EE900EB21A8 /* WorksTableViewController.swift */; settings = {ASSET_TAGS = (); }; };
+		1C16C4B91BCE2EE900EB21A8 /* WorksTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C16C4B71BCE2EE900EB21A8 /* WorksTableViewController.swift */; settings = {ASSET_TAGS = (); }; };
+		1C16C4BB1BCE358B00EB21A8 /* WorksTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C16C4BA1BCE358B00EB21A8 /* WorksTableViewCell.swift */; settings = {ASSET_TAGS = (); }; };
+		1C16C4BC1BCE358B00EB21A8 /* WorksTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C16C4BA1BCE358B00EB21A8 /* WorksTableViewCell.swift */; settings = {ASSET_TAGS = (); }; };
+		1C16C4BE1BD430FA00EB21A8 /* WorkDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C16C4BD1BD430FA00EB21A8 /* WorkDetailViewController.swift */; settings = {ASSET_TAGS = (); }; };
+		1C16C4C01BD500ED00EB21A8 /* ViewTaskTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C16C4BF1BD500ED00EB21A8 /* ViewTaskTableViewCell.swift */; settings = {ASSET_TAGS = (); }; };
+		70403FA8E63B8F8521A8F180 /* Pods_Work_Reminder.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E07F4CED9BC20DBE279A10A5 /* Pods_Work_Reminder.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -34,6 +45,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0E879DB3F3E35C23A6CC1606 /* Pods-Work Reminder.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Work Reminder.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Work Reminder/Pods-Work Reminder.debug.xcconfig"; sourceTree = "<group>"; };
 		1C16C4771BC9207800EB21A8 /* Work Reminder.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Work Reminder.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		1C16C47A1BC9207800EB21A8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1C16C47C1BC9207800EB21A8 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -47,6 +59,16 @@
 		1C16C4961BC9207800EB21A8 /* Work ReminderUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Work ReminderUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		1C16C49A1BC9207800EB21A8 /* Work_ReminderUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Work_ReminderUITests.swift; sourceTree = "<group>"; };
 		1C16C49C1BC9207800EB21A8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1C16C4A81BCA1FE100EB21A8 /* PriorityControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PriorityControl.swift; sourceTree = "<group>"; };
+		1C16C4AA1BCBDED900EB21A8 /* Work.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Work.swift; sourceTree = "<group>"; };
+		1C16C4AC1BCC185C00EB21A8 /* Task.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Task.swift; sourceTree = "<group>"; };
+		1C16C4B01BCC2ABE00EB21A8 /* SubtaskTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SubtaskTableViewCell.swift; sourceTree = "<group>"; };
+		1C16C4B71BCE2EE900EB21A8 /* WorksTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WorksTableViewController.swift; sourceTree = "<group>"; };
+		1C16C4BA1BCE358B00EB21A8 /* WorksTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WorksTableViewCell.swift; sourceTree = "<group>"; };
+		1C16C4BD1BD430FA00EB21A8 /* WorkDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WorkDetailViewController.swift; sourceTree = "<group>"; };
+		1C16C4BF1BD500ED00EB21A8 /* ViewTaskTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewTaskTableViewCell.swift; sourceTree = "<group>"; };
+		770457B22CED8CD2707DAFB9 /* Pods-Work Reminder.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Work Reminder.release.xcconfig"; path = "Pods/Target Support Files/Pods-Work Reminder/Pods-Work Reminder.release.xcconfig"; sourceTree = "<group>"; };
+		E07F4CED9BC20DBE279A10A5 /* Pods_Work_Reminder.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Work_Reminder.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,6 +76,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				70403FA8E63B8F8521A8F180 /* Pods_Work_Reminder.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -81,6 +104,9 @@
 				1C16C48E1BC9207800EB21A8 /* Work ReminderTests */,
 				1C16C4991BC9207800EB21A8 /* Work ReminderUITests */,
 				1C16C4781BC9207800EB21A8 /* Products */,
+				40D4AFA473F64E533B9FA81B /* Pods */,
+				0E879DB3F3E35C23A6CC1606 /* Pods-Work Reminder.debug.xcconfig */,
+				B988103235C6AA1DB790562B /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -100,9 +126,17 @@
 				1C16C47A1BC9207800EB21A8 /* AppDelegate.swift */,
 				1C16C47C1BC9207800EB21A8 /* ViewController.swift */,
 				1C16C47E1BC9207800EB21A8 /* Main.storyboard */,
+				1C16C4BD1BD430FA00EB21A8 /* WorkDetailViewController.swift */,
+				1C16C4BA1BCE358B00EB21A8 /* WorksTableViewCell.swift */,
+				1C16C4A81BCA1FE100EB21A8 /* PriorityControl.swift */,
 				1C16C4811BC9207800EB21A8 /* Assets.xcassets */,
 				1C16C4831BC9207800EB21A8 /* LaunchScreen.storyboard */,
 				1C16C4861BC9207800EB21A8 /* Info.plist */,
+				1C16C4AA1BCBDED900EB21A8 /* Work.swift */,
+				1C16C4AC1BCC185C00EB21A8 /* Task.swift */,
+				1C16C4B01BCC2ABE00EB21A8 /* SubtaskTableViewCell.swift */,
+				1C16C4B71BCE2EE900EB21A8 /* WorksTableViewController.swift */,
+				1C16C4BF1BD500ED00EB21A8 /* ViewTaskTableViewCell.swift */,
 			);
 			path = "Work Reminder";
 			sourceTree = "<group>";
@@ -125,6 +159,22 @@
 			path = "Work ReminderUITests";
 			sourceTree = "<group>";
 		};
+		40D4AFA473F64E533B9FA81B /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				770457B22CED8CD2707DAFB9 /* Pods-Work Reminder.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		B988103235C6AA1DB790562B /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				E07F4CED9BC20DBE279A10A5 /* Pods_Work_Reminder.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -132,9 +182,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 1C16C49F1BC9207900EB21A8 /* Build configuration list for PBXNativeTarget "Work Reminder" */;
 			buildPhases = (
+				0FCCB01539528047CD3F2496 /* Check Pods Manifest.lock */,
 				1C16C4731BC9207800EB21A8 /* Sources */,
 				1C16C4741BC9207800EB21A8 /* Frameworks */,
 				1C16C4751BC9207800EB21A8 /* Resources */,
+				EDE50A6516D43C21796CF0E5 /* Embed Pods Frameworks */,
+				997D21E4A8857F757AC649CE /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -192,6 +245,7 @@
 				TargetAttributes = {
 					1C16C4761BC9207800EB21A8 = {
 						CreatedOnToolsVersion = 7.0.1;
+						DevelopmentTeam = M2T6Z3VFYT;
 					};
 					1C16C48A1BC9207800EB21A8 = {
 						CreatedOnToolsVersion = 7.0.1;
@@ -250,13 +304,69 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		0FCCB01539528047CD3F2496 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		997D21E4A8857F757AC649CE /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Work Reminder/Pods-Work Reminder-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		EDE50A6516D43C21796CF0E5 /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Work Reminder/Pods-Work Reminder-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		1C16C4731BC9207800EB21A8 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1C16C4AB1BCBDED900EB21A8 /* Work.swift in Sources */,
+				1C16C4B81BCE2EE900EB21A8 /* WorksTableViewController.swift in Sources */,
+				1C16C4B11BCC2ABE00EB21A8 /* SubtaskTableViewCell.swift in Sources */,
 				1C16C47D1BC9207800EB21A8 /* ViewController.swift in Sources */,
+				1C16C4BB1BCE358B00EB21A8 /* WorksTableViewCell.swift in Sources */,
+				1C16C4C01BD500ED00EB21A8 /* ViewTaskTableViewCell.swift in Sources */,
+				1C16C4AD1BCC185C00EB21A8 /* Task.swift in Sources */,
 				1C16C47B1BC9207800EB21A8 /* AppDelegate.swift in Sources */,
+				1C16C4BE1BD430FA00EB21A8 /* WorkDetailViewController.swift in Sources */,
+				1C16C4A91BCA1FE100EB21A8 /* PriorityControl.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -264,6 +374,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1C16C4BC1BCE358B00EB21A8 /* WorksTableViewCell.swift in Sources */,
+				1C16C4B91BCE2EE900EB21A8 /* WorksTableViewController.swift in Sources */,
 				1C16C4901BC9207800EB21A8 /* Work_ReminderTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -394,23 +506,31 @@
 		};
 		1C16C4A01BC9207900EB21A8 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0E879DB3F3E35C23A6CC1606 /* Pods-Work Reminder.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = "Work Reminder/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "trmquang.Work-Reminder";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
 		};
 		1C16C4A11BC9207900EB21A8 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 770457B22CED8CD2707DAFB9 /* Pods-Work Reminder.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = "Work Reminder/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "trmquang.Work-Reminder";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
 		};
@@ -481,6 +601,7 @@
 				1C16C4A11BC9207900EB21A8 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		1C16C4A21BC9207900EB21A8 /* Build configuration list for PBXNativeTarget "Work ReminderTests" */ = {
 			isa = XCConfigurationList;
@@ -489,6 +610,7 @@
 				1C16C4A41BC9207900EB21A8 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		1C16C4A51BC9207900EB21A8 /* Build configuration list for PBXNativeTarget "Work ReminderUITests" */ = {
 			isa = XCConfigurationList;
@@ -497,6 +619,7 @@
 				1C16C4A71BC9207900EB21A8 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

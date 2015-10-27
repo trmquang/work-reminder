@@ -9,7 +9,10 @@
 import UIKit
 
 class WorksTableViewController: UITableViewController {
-
+    // MARK: Properties
+    static var works = [Work]()
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -18,8 +21,41 @@ class WorksTableViewController: UITableViewController {
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+        if let savedWork = self.loadWorks() {
+            WorksTableViewController.works += savedWork
+        }
+        
     }
-
+    
+    
+    func loadSampleWorks() {
+        let task1 = Task(name: "Task 1", status: false, belongToWork: 0)
+        let task2 = Task(name: "Task 2", status: false, belongToWork: 0)
+        let task3 = Task(name: "Task 3", status: false, belongToWork: 1)
+        let task4 = Task(name: "Task 4", status: false, belongToWork: 1)
+        let task5 = Task(name: "Task 5", status: false, belongToWork: 2)
+        let work1id = WorksTableViewController.generateNewId()
+        let work1 = Work(id: work1id, name: "Working on Company Project", startTime: NSDate(), endTime: NSDate(),priority: 2, note: "ok, this is note", tasks: [task1, task2], remindBefore: 30)
+        let work2id = WorksTableViewController.generateNewId()
+        let work2 = Work(id: work2id, name: "Write the new CV", startTime: NSDate(), endTime: NSDate(),priority: 1, note: "ok, this is note", tasks: [task3, task4], remindBefore: 0)
+        let work3id = WorksTableViewController.generateNewId()
+        let work3 = Work(id: work3id, name: "Learn new Technology", startTime: NSDate(), endTime: NSDate(),priority: 0, note: "ok, this is note", tasks: [task5], remindBefore: 60)
+        WorksTableViewController.works += [work1!, work2!, work3!]
+        
+    }
+    static func generateNewId() -> Int {
+        if WorksTableViewController.works.count == 0{
+            return 0
+        }
+        var i = 0
+        for work in WorksTableViewController.works {
+            if work.id > i{
+                i = work.id
+            }
+        }
+        return i+1
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -29,43 +65,50 @@ class WorksTableViewController: UITableViewController {
 
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 0
+        return 1
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 0
+        return WorksTableViewController.works.count
     }
 
-    /*
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("reuseIdentifier", forIndexPath: indexPath)
-
+        // Table view cells are reused and should be dequeued using a cell identifier.
+        let cellIdentifier = "WorksTableViewCell"
+        let cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier, forIndexPath: indexPath) as! WorksTableViewCell
+        
         // Configure the cell...
-
+        // Fetches the appropriate meal for the data source layout.
+        let dateFormatter = NSDateFormatter()
+        dateFormatter.dateFormat = "dd/MM/yyyy-HH:mm"
+        let work = WorksTableViewController.works[indexPath.row]
+        cell.name.text = work.name
+        cell.from.text = dateFormatter.stringFromDate(work.startTime)
+        cell.to.text = dateFormatter.stringFromDate(work.endTime)
+        cell.priority.image = UIImage(named: "flag\(work.priority)")
         return cell
     }
-    */
 
-    /*
+    
     // Override to support conditional editing of the table view.
     override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
         // Return false if you do not want the specified item to be editable.
         return true
     }
-    */
 
-    /*
+   
     // Override to support editing the table view.
     override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
         if editingStyle == .Delete {
             // Delete the row from the data source
+            WorksTableViewController.works.removeAtIndex(indexPath.row)
             tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
+            saveWorks()
         } else if editingStyle == .Insert {
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
         }    
     }
-    */
 
     /*
     // Override to support rearranging the table view.
@@ -82,14 +125,107 @@ class WorksTableViewController: UITableViewController {
     }
     */
 
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
+        
+        
+        if segue.identifier == "ShowDetail" {
+            let workDetailViewController = segue.destinationViewController as! WorkDetailViewController
+            if let selectedWorkCell = sender as? WorksTableViewCell {
+                let indexPath = tableView.indexPathForCell( selectedWorkCell)!
+                let selectedWork = WorksTableViewController.works[indexPath.row]
+                workDetailViewController.work = selectedWork
+            }
+            
+        }
+//        else if segue.identifier == "AddItem" {
+//            let controller = segue.destinationViewController as! ViewController
+//            controller.navigatedFrom = segue.sourceViewController
+//        }
+        
+
     }
-    */
+    // MARK: NSCoding
+    func saveWorks(){
+        let isSuccessfulSave = NSKeyedArchiver.archiveRootObject(WorksTableViewController.works, toFile: Work.ArchiveURL.path!)
+        if !isSuccessfulSave {
+            print("Failed to save works...")
+        }
+    }
+    func loadWorks() -> [Work]? {
+        return NSKeyedUnarchiver.unarchiveObjectWithFile(Work.ArchiveURL.path!) as? [Work]
+    }
+    // MARK: Action
+    @IBAction func unwindFromViewDetail (sender: UIStoryboardSegue) {
+        // Update existing Work
+        if let sourceViewController = sender.sourceViewController as? WorkDetailViewController , work = sourceViewController.work {
+            if let selectedIndexPath = tableView.indexPathForSelectedRow {
+                WorksTableViewController.works[selectedIndexPath.row] = work
+                tableView.reloadRowsAtIndexPaths([selectedIndexPath], withRowAnimation: .None)
+            }
+
+        }
+        saveWorks()
+    }
+    @IBAction func unwindToMealList(sender: UIStoryboardSegue) {
+        // Add a new Work
+        if let sourceViewController = sender.sourceViewController as? ViewController, work = sourceViewController.work {
+            let newIndexPath = NSIndexPath(forRow: WorksTableViewController.works.count, inSection: 0)
+            work.id = WorksTableViewController.generateNewId()
+            for task in work.tasks {
+                task.belongToWork = work.id
+            }
+            WorksTableViewController.works.append(work)
+            tableView.insertRowsAtIndexPaths([newIndexPath], withRowAnimation: .Bottom)
+            // set up time period to minus
+            let periodComp = NSDateComponents()
+            periodComp.day = 0
+            periodComp.hour = 0
+            periodComp.minute = -work.remindBefore
+            print(periodComp)
+            let calendar = NSCalendar.currentCalendar()
+            let alarmTime = calendar.dateByAddingComponents(periodComp, toDate: work.startTime, options: [])
+            let noti = UILocalNotification()
+            noti.fireDate = alarmTime
+            print(noti.fireDate)
+            if work.remindBefore == 60 || work.remindBefore == 360 || work.remindBefore == 720 {
+                noti.alertBody = "Your work \(work.name) will begin in \(work.remindBefore/60) hours. Get ready!"
+            }
+            else if work.remindBefore == 1440 {
+                noti.alertBody = "Your work \(work.name) will begin in 1 day. Get ready!"
+            }
+            else if work.remindBefore == 30 {
+                noti.alertBody = "Your work \(work.name) will begin in 30 minutes. Get ready!"
+            }
+            else {
+                noti.alertBody = "Your work \(work.name) begins. Do it now!"
+            }
+            noti.alertAction = "open"
+            noti.soundName = UILocalNotificationDefaultSoundName
+            noti.userInfo = ["Id": work.id]
+            noti.category = "WORK_REMINDER_StartWork"
+            UIApplication.sharedApplication().scheduleLocalNotification(noti)
+            
+            let overduenoti = UILocalNotification()
+            overduenoti.fireDate = work.endTime
+            overduenoti.alertBody = "Your work \(work.name) is overdue"
+            overduenoti.alertAction = "open"
+            overduenoti.soundName = UILocalNotificationDefaultSoundName
+            overduenoti.userInfo = ["OverdueId": work.id]
+            overduenoti.category = "WORK_REMINDER_Overdue"
+            UIApplication.sharedApplication().scheduleLocalNotification(overduenoti)
+            print(UIApplication.sharedApplication().scheduledLocalNotifications!.count)
+            
+        }
+        saveWorks()
+
+    }
+    
+
 
 }
