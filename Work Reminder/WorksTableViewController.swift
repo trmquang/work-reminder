@@ -73,6 +73,10 @@ class WorksTableViewController: UITableViewController {
         cell.to.text = dateFormatter.stringFromDate(work.endTime)
         cell.priority.image = UIImage(named: "flag\(work.priority)")
         cell.checkBox.selected = work.isFinished
+        // if work is overdue , text name color change to red
+        if (work.isOverdue == true) {
+            cell.name.textColor = UIColor.redColor()
+        }
         return cell
     }
 
