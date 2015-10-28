@@ -24,25 +24,10 @@ class WorksTableViewController: UITableViewController {
         if let savedWork = self.loadWorks() {
             WorksTableViewController.works += savedWork
         }
+        UIApplication.sharedApplication().scheduledLocalNotifications = []
         
     }
-    
-    
-    func loadSampleWorks() {
-        let task1 = Task(name: "Task 1", status: false, belongToWork: 0)
-        let task2 = Task(name: "Task 2", status: false, belongToWork: 0)
-        let task3 = Task(name: "Task 3", status: false, belongToWork: 1)
-        let task4 = Task(name: "Task 4", status: false, belongToWork: 1)
-        let task5 = Task(name: "Task 5", status: false, belongToWork: 2)
-        let work1id = WorksTableViewController.generateNewId()
-        let work1 = Work(id: work1id, name: "Working on Company Project", startTime: NSDate(), endTime: NSDate(),priority: 2, note: "ok, this is note", tasks: [task1, task2], remindBefore: 30)
-        let work2id = WorksTableViewController.generateNewId()
-        let work2 = Work(id: work2id, name: "Write the new CV", startTime: NSDate(), endTime: NSDate(),priority: 1, note: "ok, this is note", tasks: [task3, task4], remindBefore: 0)
-        let work3id = WorksTableViewController.generateNewId()
-        let work3 = Work(id: work3id, name: "Learn new Technology", startTime: NSDate(), endTime: NSDate(),priority: 0, note: "ok, this is note", tasks: [task5], remindBefore: 60)
-        WorksTableViewController.works += [work1!, work2!, work3!]
-        
-    }
+    // TODO: Generate new Id for new work
     static func generateNewId() -> Int {
         if WorksTableViewController.works.count == 0{
             return 0
@@ -87,6 +72,7 @@ class WorksTableViewController: UITableViewController {
         cell.from.text = dateFormatter.stringFromDate(work.startTime)
         cell.to.text = dateFormatter.stringFromDate(work.endTime)
         cell.priority.image = UIImage(named: "flag\(work.priority)")
+        cell.checkBox.selected = work.isFinished
         return cell
     }
 
@@ -102,6 +88,12 @@ class WorksTableViewController: UITableViewController {
     override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
         if editingStyle == .Delete {
             // Delete the row from the data source
+            let id = WorksTableViewController.works[indexPath.row]
+            for notification in UIApplication.sharedApplication().scheduledLocalNotifications!  {
+                if notification.userInfo!["Id"] as! String == "\(id)" || notification.userInfo!["Id"] as! String == "\(id)-overdue" {
+                    UIApplication.sharedApplication().cancelLocalNotification(notification)
+                }
+            }
             WorksTableViewController.works.removeAtIndex(indexPath.row)
             tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
             saveWorks()
@@ -190,6 +182,8 @@ class WorksTableViewController: UITableViewController {
             print(periodComp)
             let calendar = NSCalendar.currentCalendar()
             let alarmTime = calendar.dateByAddingComponents(periodComp, toDate: work.startTime, options: [])
+            
+            // create new start notification
             let noti = UILocalNotification()
             noti.fireDate = alarmTime
             print(noti.fireDate)
@@ -207,16 +201,17 @@ class WorksTableViewController: UITableViewController {
             }
             noti.alertAction = "open"
             noti.soundName = UILocalNotificationDefaultSoundName
-            noti.userInfo = ["Id": work.id]
+            noti.userInfo = ["Id": "\(work.id)"]
             noti.category = "WORK_REMINDER_StartWork"
             UIApplication.sharedApplication().scheduleLocalNotification(noti)
             
+            // create new overdue notification
             let overduenoti = UILocalNotification()
             overduenoti.fireDate = work.endTime
             overduenoti.alertBody = "Your work \(work.name) is overdue"
             overduenoti.alertAction = "open"
             overduenoti.soundName = UILocalNotificationDefaultSoundName
-            overduenoti.userInfo = ["OverdueId": work.id]
+            overduenoti.userInfo = ["Id": "\(work.id)-overdue"]
             overduenoti.category = "WORK_REMINDER_Overdue"
             UIApplication.sharedApplication().scheduleLocalNotification(overduenoti)
             print(UIApplication.sharedApplication().scheduledLocalNotifications!.count)

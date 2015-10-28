@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import DOCheckboxControl
 
 class WorkDetailViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     // MARK: Properties
@@ -20,6 +21,7 @@ class WorkDetailViewController: UIViewController, UITableViewDelegate, UITableVi
     @IBOutlet weak var noteLabel: UILabel!
     @IBOutlet weak var backBtn: UIBarButtonItem!
     
+    @IBOutlet weak var finishCheckbox: CheckboxControl!
     @IBOutlet weak var remindBeforeLabel: UILabel!
     @IBOutlet weak var editBtn: UIBarButtonItem!
 //    @IBOutlet weak var taskCell: ViewTaskTableViewCell!
@@ -29,6 +31,8 @@ class WorkDetailViewController: UIViewController, UITableViewDelegate, UITableVi
         super.viewDidLoad()
         
         // Do any additional setup after loading the view.
+        self.finishCheckbox.layer.borderColor = UIColor.blackColor().CGColor
+        self.finishCheckbox.layer.borderWidth = 2
         if let work = self.work {
             print(self.workName.frame.origin.y)
             taskList.delegate = self
@@ -53,7 +57,7 @@ class WorkDetailViewController: UIViewController, UITableViewDelegate, UITableVi
                 self.remindBeforeLabel.text = "None"
                 
             }
-            
+            self.finishCheckbox.selected = work.isFinished
             self.priorityImage.image = UIImage(named: "flag\(work.priority)")
             print(self.taskList.frame.origin.y)
             print("old content View bound height: \(self.contentView.bounds.size.height)")
@@ -125,6 +129,7 @@ class WorkDetailViewController: UIViewController, UITableViewDelegate, UITableVi
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
         if sender === backBtn{
+            work!.isFinished = self.finishCheckbox.selected
             for row in 0..<work!.tasks.count {
                 let indexPath = NSIndexPath(forRow: row, inSection: 0)
                 
@@ -155,7 +160,7 @@ class WorkDetailViewController: UIViewController, UITableViewDelegate, UITableVi
         if let sourceViewController = sender.sourceViewController as? ViewController {
             self.work = sourceViewController.work
             for notification in (UIApplication.sharedApplication().scheduledLocalNotifications )! {
-                if notification.userInfo!["Id"] as! Int == work!.id {
+                if notification.userInfo!["Id"] as! String == "\(work!.id)" {
                     let periodComp = NSDateComponents()
                     periodComp.day = 0
                     periodComp.hour = 0
@@ -178,7 +183,7 @@ class WorkDetailViewController: UIViewController, UITableViewDelegate, UITableVi
 
                     
                 }
-                if notification.userInfo!["OverdueId"] as! Int == work!.id {
+                else if notification.userInfo!["Id"] as! String == "\(work!.id)-overdue" {
                     notification.fireDate = self.work!.endTime
                 }
                 

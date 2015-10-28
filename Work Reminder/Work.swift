@@ -18,6 +18,7 @@ class Work: NSObject, NSCoding {
     var note: String
     var tasks:[Task]
     var remindBefore: Int
+    var isFinished: Bool
     var isOverdue: Bool {
         return (NSDate().compare(self.endTime) == NSComparisonResult.OrderedDescending) // deadline is earlier than current date
     }
@@ -35,10 +36,11 @@ class Work: NSObject, NSCoding {
         static let tasksKey = "tasks"
         static let remindBeforeKey = "remindBefore"
         static let tasksCountKey = "taskCount"
+        static let isFinishedKey = "isFinished"
     }
     
     // Mark: Initialization
-    init?(id: Int, name: String, startTime:NSDate, endTime:NSDate, priority:Int, note:String, tasks: [Task], remindBefore: Int){
+    init?(id: Int, name: String, startTime:NSDate, endTime:NSDate, priority:Int, note:String, tasks: [Task], remindBefore: Int, isFinished: Bool){
         self.id = id
         self.name = name
         self.startTime = startTime
@@ -47,6 +49,7 @@ class Work: NSObject, NSCoding {
         self.note = note
         self.tasks = tasks
         self.remindBefore = remindBefore
+        self.isFinished = isFinished
         super.init()
         // Initialization should fail if there is no name or if the rating is negative.
         if self.name.isEmpty || self.priority < 0 {
@@ -68,6 +71,7 @@ class Work: NSObject, NSCoding {
             aCoder.encodeObject(tasks[index])
         }
         aCoder.encodeInteger(remindBefore, forKey:PropertyKey.remindBeforeKey)
+        aCoder.encodeBool(isFinished, forKey: PropertyKey.isFinishedKey)
     }
     
     
@@ -86,7 +90,8 @@ class Work: NSObject, NSCoding {
             }
         }
         let remindBefore = aDecoder.decodeIntegerForKey(PropertyKey.remindBeforeKey)
-        self.init(id: id, name: name, startTime: startTime, endTime:endTime, priority: priority, note: note, tasks: tasks, remindBefore: remindBefore)
+        let isFinished = aDecoder.decodeBoolForKey(PropertyKey.isFinishedKey)
+        self.init(id: id, name: name, startTime: startTime, endTime:endTime, priority: priority, note: note, tasks: tasks, remindBefore: remindBefore, isFinished: isFinished)
         
     }
     

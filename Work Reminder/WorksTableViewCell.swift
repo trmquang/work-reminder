@@ -23,8 +23,6 @@ class WorksTableViewCell: UITableViewCell {
 
     override func setSelected(selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-        checkBox.layer.borderColor = UIColor.blackColor().CGColor
-        checkBox.layer.borderWidth = 1
         // Configure the view for the selected state
     }
 

@@ -222,8 +222,11 @@ class ViewController: UIViewController, UITextFieldDelegate, UITableViewDelegate
             else if (periodValue == "1 day") {
                 period = 1440
             }
-                        
-            self.work = Work (id: 0, name: name!,startTime: from, endTime: to, priority: priority, note: note, tasks: mytasks, remindBefore: period)
+            var isFinished = false
+            if (self.work != nil) {
+                isFinished = self.work!.isFinished
+            }
+            self.work = Work (id: 0, name: name!,startTime: from, endTime: to, priority: priority, note: note, tasks: mytasks, remindBefore: period, isFinished: isFinished)
             
         }
         
