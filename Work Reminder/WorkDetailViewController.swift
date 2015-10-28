@@ -27,16 +27,23 @@ class WorkDetailViewController: UIViewController, UITableViewDelegate, UITableVi
 //    @IBOutlet weak var taskCell: ViewTaskTableViewCell!
     @IBOutlet weak var taskList: UITableView!
     var work: Work?
+    let rowHeight = CGFloat(44.0)
+    let contentViewBoundsSizeHeight = CGFloat(667.0)
+    let contentViewBoundsOriginY = CGFloat(0.0)
+    let noteTextViewFrameOriginY = CGFloat(408.0)
+    let noteLabelFrameOriginY = CGFloat(379.0)
+    let taskListFrameSizeHeight = CGFloat(44.0)
     override func viewDidLoad() {
         super.viewDidLoad()
         
         // Do any additional setup after loading the view.
         self.finishCheckbox.layer.borderColor = UIColor.blackColor().CGColor
         self.finishCheckbox.layer.borderWidth = 2
+        taskList.delegate = self
+        taskList.dataSource = self
+        taskList.rowHeight = 44.0
         if let work = self.work {
             print(self.workName.frame.origin.y)
-            taskList.delegate = self
-            taskList.dataSource = self
             navigationItem.title = "Detail"
             self.workName.text = work.name
             let dateFormatter = NSDateFormatter()
@@ -55,14 +62,13 @@ class WorkDetailViewController: UIViewController, UITableViewDelegate, UITableVi
             }
             else {
                 self.remindBeforeLabel.text = "None"
-                
             }
             self.finishCheckbox.selected = work.isFinished
             self.priorityImage.image = UIImage(named: "flag\(work.priority)")
-            print(self.taskList.frame.origin.y)
-            print("old content View bound height: \(self.contentView.bounds.size.height)")
+
             if work.tasks.count>1 {
                 let remaintask = work.tasks.count-1
+                print ("row height: \(self.taskList.frame.size.height)")
                 let heightShift = CGFloat(remaintask) * self.taskList.frame.size.height
                 self.contentView.bounds.size.height += (heightShift)
                 self.contentView.bounds.origin.y += (heightShift/2)
@@ -159,6 +165,39 @@ class WorkDetailViewController: UIViewController, UITableViewDelegate, UITableVi
     @IBAction func unwindToMealList (sender: UIStoryboardSegue){
         if let sourceViewController = sender.sourceViewController as? ViewController {
             self.work = sourceViewController.work
+            self.workName.text = work!.name
+            let dateFormatter = NSDateFormatter()
+            dateFormatter.dateFormat = "dd/MM/yyyy-HH:mm"
+            self.startTime.text = dateFormatter.stringFromDate(work!.startTime)
+            self.toTime.text = dateFormatter.stringFromDate(work!.endTime)
+            self.noteTextView.text = work!.note
+            if (work!.remindBefore == 30) {
+                self.remindBeforeLabel.text = "30 minutes"
+            }
+            else if (work!.remindBefore == 60 || work!.remindBefore == 360 || work!.remindBefore == 720) {
+                self.remindBeforeLabel.text = "\(work!.remindBefore/60) hours"
+            }
+            else if (work!.remindBefore == 1440){
+                self.remindBeforeLabel.text = "1 day"
+            }
+            else {
+                self.remindBeforeLabel.text = "None"
+            }
+            self.finishCheckbox.selected = work!.isFinished
+            self.priorityImage.image = UIImage(named: "flag\(work!.priority)")
+            
+            if work!.tasks.count>1 {
+                let remaintask = work!.tasks.count-1
+                print ("row height: \(self.taskList.frame.size.height)")
+                let heightShift = CGFloat(remaintask) * self.rowHeight
+                self.contentView.bounds.size.height = self.contentViewBoundsSizeHeight + heightShift
+                self.contentView.bounds.origin.y = self.contentViewBoundsOriginY + heightShift/2
+                self.noteTextView.frame.origin.y = self.noteTextViewFrameOriginY + heightShift
+                self.noteLabel.frame.origin.y = self.noteLabelFrameOriginY + heightShift
+                self.taskList.frame.size.height = self.taskListFrameSizeHeight + heightShift
+                
+            }
+
             for notification in (UIApplication.sharedApplication().scheduledLocalNotifications )! {
                 if notification.userInfo!["Id"] as! String == "\(work!.id)" {
                     let periodComp = NSDateComponents()
@@ -188,8 +227,6 @@ class WorkDetailViewController: UIViewController, UITableViewDelegate, UITableVi
                 }
                 
             }
-            self.viewDidLoad()
-            
         }
     }
 
