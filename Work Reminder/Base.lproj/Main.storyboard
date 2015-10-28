@@ -25,7 +25,7 @@
                                             <rect key="frame" x="8" y="53" width="132" height="34.5"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <animations/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                            <fontDescription key="fontDescription" type="italicSystem" pointSize="14"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
@@ -41,25 +41,20 @@
                                             <rect key="frame" x="155" y="53" width="150" height="34.5"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <animations/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                            <fontDescription key="fontDescription" type="italicSystem" pointSize="14"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="flag0" id="pjO-J8-djE">
-                                            <rect key="frame" x="313" y="53" width="35" height="35"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <animations/>
-                                        </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Work Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="TnL-It-4Aj">
-                                            <rect key="frame" x="59" y="18" width="316" height="27"/>
+                                            <rect key="frame" x="8" y="18" width="286" height="27"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <animations/>
-                                            <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="15"/>
+                                            <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="16"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <view contentMode="scaleToFill" id="y8Q-Fz-xL7" customClass="CheckboxControl" customModule="DOCheckboxControl">
-                                            <rect key="frame" x="11" y="8" width="40" height="37"/>
+                                        <view userInteractionEnabled="NO" contentMode="scaleToFill" id="y8Q-Fz-xL7" customClass="CheckboxControl" customModule="DOCheckboxControl">
+                                            <rect key="frame" x="302" y="8" width="40" height="37"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <animations/>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -69,6 +64,11 @@
                                                 </userDefinedRuntimeAttribute>
                                             </userDefinedRuntimeAttributes>
                                         </view>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="flag0" id="pjO-J8-djE">
+                                            <rect key="frame" x="307" y="53" width="35" height="35"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <animations/>
+                                        </imageView>
                                     </subviews>
                                     <animations/>
                                 </tableViewCellContentView>
@@ -431,7 +431,7 @@
                                                             <autoresizingMask key="autoresizingMask"/>
                                                             <subviews>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="task Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="pQx-Lb-GFr">
-                                                                    <rect key="frame" x="51" y="0.0" width="275" height="43.5"/>
+                                                                    <rect key="frame" x="44" y="0.0" width="282" height="43.5"/>
                                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                                     <animations/>
                                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -439,7 +439,7 @@
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                                 <view contentMode="scaleToFill" id="q22-vn-aXi" customClass="CheckboxControl" customModule="DOCheckboxControl">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="43" height="43.5"/>
+                                                                    <rect key="frame" x="8" y="8" width="28" height="27.5"/>
                                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                                     <animations/>
                                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -509,6 +509,20 @@
                                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
+                                            <view contentMode="scaleToFill" id="zFy-P7-cAk" customClass="CheckboxControl" customModule="DOCheckboxControl">
+                                                <rect key="frame" x="317" y="106" width="45" height="44"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <animations/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            </view>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Finish?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="7sp-BH-DbE">
+                                                <rect key="frame" x="258" y="117" width="56" height="21"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <animations/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
                                         </subviews>
                                         <animations/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -537,6 +551,7 @@
                         <outlet property="backBtn" destination="K4f-kE-CxK" id="jNQ-v1-S6c"/>
                         <outlet property="contentView" destination="gzK-CC-LkK" id="i01-ny-PnT"/>
                         <outlet property="editBtn" destination="qyw-P8-ZJp" id="whN-uI-5l4"/>
+                        <outlet property="finishCheckbox" destination="zFy-P7-cAk" id="8KH-dL-ffk"/>
                         <outlet property="noteLabel" destination="KWr-IS-yBF" id="29q-Uk-TfA"/>
                         <outlet property="noteTextView" destination="wyt-bg-CEM" id="1VD-5r-B3S"/>
                         <outlet property="priorityImage" destination="4DQ-Sj-EnC" id="s6K-FU-d7n"/>
