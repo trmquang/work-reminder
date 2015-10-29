@@ -77,6 +77,9 @@ class WorksTableViewController: UITableViewController {
         if (work.isOverdue == true) {
             cell.name.textColor = UIColor.redColor()
         }
+        if (work.isFinished == true) {
+            cell.name.textColor = UIColor.blueColor()
+        }
         return cell
     }
 
