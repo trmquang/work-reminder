@@ -24,7 +24,7 @@ class WorksTableViewController: UITableViewController {
         if let savedWork = self.loadWorks() {
             WorksTableViewController.works += savedWork
         }
-        UIApplication.sharedApplication().scheduledLocalNotifications = []
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "refreshList", name: "WorkListShouldRefresh", object: nil)
         
     }
     // TODO: Generate new Id for new work
